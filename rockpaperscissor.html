@@ -13,15 +13,21 @@
             
             switch(number) {
                 case 1:
+                console.log("computer: rock");
                     return "rock";
+                    
                     break;
                 case 2:
+                console.log("computer: paper");
                     return "paper";
+
                     break;
                 case 3:
+                console.log("computer: scissor");
                     return "scissor";
                     break;
             }
+            
         }
 
         function playerPlay(){
@@ -33,12 +39,11 @@
                     test = false;
                 }
             }
+            console.log("player: " + pick);
             return pick;
         }
 
-        const playerSelection = playerPlay();
-
-        const computerSelection = computerPlay();
+        
 
         function playRound(playerSelection, computerSelection){
 
@@ -46,11 +51,62 @@
             let computer = computerSelection;
 
             if (player === computerSelection){
-                return "Tie"
+                
+                return "Tie";
             }
 
-            else if (player === "rock" && computer !== 
+            if (player === "rock" && computer === "paper"){
+                
+                return "You lose!"; 
+            }
+            
+
+            if (player === "paper" && computer === "scissor"){
+                
+                return "You lose!"; 
+            }
+           
+            
+            if (player === "scissor" && computer === "rock"){
+                
+                return "You lose!"; 
+            }
+            
+            return "You win!";
         }
+
+        function game(){
+            let counter = 0;
+            for(let i = 0; i < 5; i++){
+                let playerSelection = playerPlay();
+                let computerSelection = computerPlay();
+                let county = playRound(playerSelection, computerSelection);
+
+                 if (county === "You win!"){
+                     counter++;
+                 }
+                 else if(county ==="You lose!"){
+                     counter--;
+                 }
+                 
+                 console.log(county);
+            }
+
+           if (counter > 0){
+               alert("You are the winner!");
+           }
+           else if (counter < 0){
+               alert("You are the loser!");
+           }
+
+           else{
+               alert("Tie game!");
+           }
+ 
+
+        }
+
+        console.log(game())
 
     </script>
 </body>
