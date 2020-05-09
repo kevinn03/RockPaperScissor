@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Rock Paper scissor</title>
+</head>
+<body>
+    <script>
+
+        function computerPlay(){
+            let number = Math.floor(Math.random() * 2) + 1;
+            
+            switch(number) {
+                case 1:
+                    return "rock";
+                    break;
+                case 2:
+                    return "paper";
+                    break;
+                case 3:
+                    return "scissor";
+                    break;
+            }
+        }
+
+        function playerPlay(){
+            let pick = "";
+            let test = true;
+            while (test){
+                pick = prompt("Choose!").toLocaleLowerCase();
+                if(pick === "rock" || pick === "paper" || pick ==="scissor"){
+                    test = false;
+                }
+            }
+            return pick;
+        }
+
+        const playerSelection = playerPlay();
+
+        const computerSelection = computerPlay();
+
+        function playRound(playerSelection, computerSelection){
+
+            let player = playerSelection;
+            let computer = computerSelection;
+
+            if (player === computerSelection){
+                return "Tie"
+            }
+
+            else if (player === "rock" && computer !== 
+        }
+
+    </script>
+</body>
+</html>
