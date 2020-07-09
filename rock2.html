@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Rock Paper scissor</title>
+    <link rel="stylesheet" href="rock2.css">
+</head>
+<body>
+    <div class="result">
+        <p class="p1">0</p>
+        <p class="p2">0</p>
+        
+    </div>
+    <div class="haha">
+        <p class="p3"></p>
+        <p class="p4"></p>
+    </div>
+
+    <div class="third">
+        <p class="p5"></p>
+        
+    </div>
+    <div class="buttons">
+        <div class="button">
+            <button class="rock">Rock</button>
+        </div>
+        <div class="button">
+            <button class="paper">Paper</button>
+        </div>
+        <div class="button">
+            <button class="scissor">Scissor</button>
+        </div>
+
+    </div>
+    <script>
+
+        function computerPlay(){
+            let number = Math.floor(Math.random() * 3) + 1;
+            
+            switch(number) {
+                case 1:
+                console.log("computer: rock");
+                    return "rock";
+                    
+                    break;
+                case 2:
+                console.log("computer: paper");
+                    return "paper";
+
+                    break;
+                case 3:
+                console.log("computer: scissor");
+                    return "scissor";
+                    break;
+            }
+            
+        }
+
+        function playerPlay(){
+            let pick = "";
+            let test = true;
+            while (test){
+                pick = prompt("Choose!").toLocaleLowerCase().trim();
+                if(pick === "rock" || pick === "paper" || pick ==="scissor"){
+                    test = false;
+                }
+            }
+            console.log("player: " + pick);
+            return pick;
+        }
+
+        let playerScore = 0;
+            let computerScore = 0;        
+
+        function playRound(play){
+
+            let player = play;
+            console.log(play);
+            let computer = computerPlay();
+            
+            let result = document.querySelector(".p5");
+            let playerPoint = document.querySelector(".p1");
+            let compPoint = document.querySelector(".p2");
+            let playerRes = document.querySelector(".p3");
+            let compRes = document.querySelector(".p4");
+            playerRes.textContent = play;
+            compRes.textContent = computer;
+            if (player === computer){
+                
+                result.textContent = "Tie!";
+                return "Tie!";
+            }
+
+            if (player === "rock" && computer === "paper"){
+                computerScore++;
+                compPoint.textContent = `${computerScore}`;
+                result.textContent = "You Lose!";
+                gameOver();
+                return "You lose!"; 
+            }
+            
+
+            if (player === "paper" && computer === "scissor"){
+                computerScore++;
+                compPoint.textContent = `${computerScore}`;
+                result.textContent = "You Lose!";
+                gameOver();
+                return "You lose!"; 
+            }
+           
+            
+            if (player === "scissor" && computer === "rock"){
+                computerScore++;
+                compPoint.textContent = `${computerScore}`;
+                result.textContent = "You Lose!";
+                gameOver();
+                return "You lose!"; 
+            }
+            result.textContent = "You Win!";
+            playerScore++;
+            playerPoint.textContent = `${playerScore}`;
+            gameOver();
+            return "You win!";
+        }
+
+        function gameOver(){
+            if(playerScore === 5){
+                alert("Winner!");
+                
+        }
+            if(computerScore === 5) {
+                alert("Loser!");
+                
+            }
+
+            
+        }
+        function restart(){
+            let result = document.querySelector(".p5");
+           
+            let playerPoint = document.querySelector(".p1");
+            let compPoint = document.querySelector(".p2");
+            let playerRes = document.querySelector(".p3");
+            let compRes = document.querySelector(".p4");
+
+            array = [result, playerPoint, compPoint, playerRes, compRes];
+            array.forEach((ele) => {
+                ele.textContent = "";
+            });
+
+ 
+
+        }
+
+       
+
+        const butty = document.querySelectorAll("button");
+        butty.forEach((button) => {
+            
+            button.addEventListener("click", function() {
+                let result = playRound(this.getAttribute("class"))}
+                
+                
+                );
+                
+            
+        });
+
+    </script>
+</body>
+</html>
